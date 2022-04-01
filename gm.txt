@@ -1,0 +1,13 @@
+https://version.prd.app.priconne-grandmasters.jp/asset-resource.json
+resver
+resourceServerHost
+
+https://{resourceServerHost}/{resver}/Jpn/Android/manifests/
+
+https://prd-priconne-grandmasters.akamaized.net/10000300/Jpn/Android/manifests/
+
+https://prd-priconne-grandmasters.akamaized.net/10000300/Jpn/Android/manifests/assetbundle.manifest
+
+https://{resourceServerHost}/{resver}/Jpn/Android/assetbundles/7R/7RD4MWAAGTJRNZHIWWMZJI7MUY
+
+=> manifest.json
