@@ -12,7 +12,7 @@ public class PriariExceptionClientFilter : IClientFilter
 
     public async ValueTask<ResponseContext> SendAsync(RequestContext context, Func<RequestContext, ValueTask<ResponseContext>> next)
     {
-        AddOrReplaceHeaderValue(context.CallOptions.Headers, "x-app-version", "1.0.0");
+        AddOrReplaceHeaderValue(context.CallOptions.Headers, "x-app-version", "2.0.0");
         AddOrReplaceHeaderValue(context.CallOptions.Headers, "x-app-resource-version", "10000300");
         AddOrReplaceHeaderValue(context.CallOptions.Headers, "x-app-endpoint-revision", "1");
         AddOrReplaceHeaderValue(context.CallOptions.Headers, "x-app-master-hash", "");

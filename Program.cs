@@ -13,13 +13,14 @@ using MessagePack;
 using Priari.ServerShared.Services;
 
 
-var endpointApi = "https://api.prd.app.priconne-grandmasters.jp";
+var endpointApi = "https://api-cmxegy.prd.app.priconne-grandmasters.jp";
 var uri = new Uri(endpointApi);
 var channel = GrpcChannel.ForAddress(uri);
 var filters = new IClientFilter[2];
 filters[0] = new PriariExceptionClientFilter();
 filters[1] = new AdditionalHeadersClientFilter();
 var client = MagicOnionClient.Create<IUserAccountService>(channel, filters);
+
 var result = await client.GetMasterDataAsync("-");
 
 var file = result.Result.Data;
@@ -72,7 +73,7 @@ static string ManifestToJson(byte[] file)
 var hc = new HttpClient();
 var manifest0 =
     await hc.GetByteArrayAsync(
-        "https://prd-priconne-grandmasters.akamaized.net/10000300/Jpn/Android/manifests/assetbundle.manifest");
+        "https://prd-priconne-grandmasters-hq6jkeih.akamaized.net/10001300/Jpn/Android/manifests/assetbundle.manifest");
 
 File.WriteAllText("manifest.json", ManifestToJson(manifest0));
 
@@ -90,5 +91,5 @@ manifest["asset"].ToObject<ManifestAsset[]>().Select(a => new
         Directory.CreateDirectory(Path.GetDirectoryName("./" + asset.Name));
     File.WriteAllBytes(Directory.Exists(asset.Name) ? asset.Name + ".asset" : asset.Name,
         hc.GetByteArrayAsync(
-            $"https://prd-priconne-grandmasters.akamaized.net/10000300/Jpn/Android/assetbundles/{asset.Hash[..2]}/{asset.Hash}").Result);
+            $"https://prd-priconne-grandmasters-hq6jkeih.akamaized.net/10001300/Jpn/Android/assetbundles/{asset.Hash[..2]}/{asset.Hash}").Result);
 });
